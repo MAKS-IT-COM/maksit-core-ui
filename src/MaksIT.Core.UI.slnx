@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="MaksIT.Core.Desktop/MaksIT.Core.Desktop.csproj" />
+  <Project Path="MaksIT.Core.Desktop.Tests/MaksIT.Core.Desktop.Tests.csproj" />
+  <Project Path="MaksIT.Core.UI/MaksIT.Core.UI.csproj" />
+  <Project Path="MaksIT.Core.UI.Tests/MaksIT.Core.UI.Tests.csproj" />
+</Solution>

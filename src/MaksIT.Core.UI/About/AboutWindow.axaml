@@ -1,0 +1,103 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:MaksIT.Core.UI.About"
+        x:Class="MaksIT.Core.UI.About.AboutWindow"
+        x:DataType="vm:AboutViewModel"
+        Width="440"
+        MaxHeight="560"
+        SizeToContent="Height"
+        CanResize="False"
+        WindowStartupLocation="CenterOwner"
+        ShowInTaskbar="False">
+  <Window.Styles>
+    <Style Selector="Button.about-link">
+      <Setter Property="Background" Value="Transparent" />
+      <Setter Property="BorderThickness" Value="0" />
+      <Setter Property="Padding" Value="0" />
+      <Setter Property="Margin" Value="0" />
+      <Setter Property="MinHeight" Value="0" />
+      <Setter Property="HorizontalAlignment" Value="Left" />
+      <Setter Property="HorizontalContentAlignment" Value="Left" />
+      <Setter Property="VerticalAlignment" Value="Center" />
+      <Setter Property="Cursor" Value="Hand" />
+      <Setter Property="TextBlock.TextDecorations" Value="Underline" />
+    </Style>
+  </Window.Styles>
+  <DockPanel Margin="20">
+    <Button DockPanel.Dock="Bottom"
+            Content="{Binding Info.CloseLabel}"
+            Click="OnCloseClick"
+            Padding="12,7"
+            Margin="0,20,0,0"
+            HorizontalAlignment="Right"
+            IsDefault="True"
+            IsCancel="True" />
+
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                  VerticalScrollBarVisibility="Auto">
+      <StackPanel Spacing="16">
+        <StackPanel Spacing="4">
+          <TextBlock Text="{Binding Info.Brand}" Opacity="0.65" FontSize="12" />
+          <TextBlock Text="{Binding Info.ProductName}" FontSize="22" FontWeight="SemiBold" />
+          <TextBlock Text="{Binding VersionText}"
+                     Opacity="0.8"
+                     IsVisible="{Binding HasVersion}" />
+          <TextBlock Text="{Binding Info.Summary}"
+                     Opacity="0.75"
+                     TextWrapping="Wrap"
+                     Margin="0,4,0,0" />
+        </StackPanel>
+
+        <StackPanel Spacing="2" IsVisible="{Binding HasLegal}">
+          <TextBlock Text="{Binding Info.Copyright}"
+                     Opacity="0.75"
+                     TextWrapping="Wrap"
+                     IsVisible="{Binding HasCopyright}" />
+          <TextBlock Text="{Binding Info.License}"
+                     Opacity="0.75"
+                     TextWrapping="Wrap"
+                     IsVisible="{Binding HasLicense}" />
+        </StackPanel>
+
+        <StackPanel Spacing="12" IsVisible="{Binding HasPeople}">
+          <StackPanel Spacing="2" IsVisible="{Binding HasCredits}">
+            <TextBlock Text="{Binding Info.CreditsLabel}" Opacity="0.65" />
+            <TextBlock Text="{Binding Info.Credits}" TextWrapping="Wrap" />
+          </StackPanel>
+
+          <StackPanel Spacing="2" IsVisible="{Binding HasContributors}">
+            <TextBlock Text="{Binding Info.ContributorsLabel}" Opacity="0.65" />
+            <ItemsControl ItemsSource="{Binding Info.Contributors}">
+              <ItemsControl.ItemTemplate>
+                <DataTemplate x:CompileBindings="False">
+                  <TextBlock Text="{Binding}" TextWrapping="Wrap" />
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
+          </StackPanel>
+        </StackPanel>
+
+        <StackPanel Spacing="10" IsVisible="{Binding HasLinks}">
+          <ItemsControl ItemsSource="{Binding Contacts}" IsVisible="{Binding HasContacts}">
+            <ItemsControl.ItemTemplate>
+              <DataTemplate x:DataType="vm:AboutContactRow">
+                <StackPanel Spacing="2" Margin="0,0,0,8">
+                  <TextBlock Text="{Binding Role}" Opacity="0.65" />
+                  <Button Classes="about-link"
+                          Content="{Binding Address}"
+                          Command="{Binding Open}"
+                          CommandParameter="{Binding Uri}" />
+                </StackPanel>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+
+          <Button Classes="about-link"
+                  Content="{Binding Info.Site}"
+                  Command="{Binding OpenSiteCommand}"
+                  IsVisible="{Binding HasSite}" />
+        </StackPanel>
+      </StackPanel>
+    </ScrollViewer>
+  </DockPanel>
+</Window>
