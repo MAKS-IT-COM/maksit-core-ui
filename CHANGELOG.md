@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-10-27
+
+### Changed
+
+- **MaksIT.Core.UI:** Avalonia and Avalonia.Desktop 12.1.2 → 12.1.4.
+- Release packs both libraries for the GitHub release; nuget.org publish uses GitHub Actions Trusted Publishing instead of local `DotNetNuGet`.
+
+### Fixed
+
+- Sync RepoUtils release engine (`-InstallOnly` / Helm install helpers) and bump test packages (xunit.v3, coverlet.MTP).
+
 ## [0.1.0] - 2026-10-10
 
 ### Added

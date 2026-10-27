@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft-07/schema",
   "title": "Release Package Script Settings",
-  "description": "Invoke-ReleasePackage.ps1 plugin settings. Place ReleasePublishGuard before GitHub/DotNetNuGet. Publish plugins omit per-plugin branches. Semver comes from DotNetReleaseVersion (projectFiles). DotNetPack packs the first projectFiles entry only, so each library is packed and pushed as its own pair.",
+  "description": "Invoke-ReleasePackage.ps1 plugin settings. Place ReleasePublishGuard before GitHub. Publish plugins omit per-plugin branches. Semver comes from DotNetReleaseVersion (projectFiles). DotNetPack packs the first projectFiles entry only, so each library is packed for GitHub assets; nuget.org publish is GHA Trusted Publishing.",
   "repoUtilsSecretsShared": "RepoUtilsSecretsShared",
   "repoUtilsSecrets": "RepoUtilsSecrets",
   "plugins": [
@@ -48,13 +48,6 @@
       "artifactsDir": "..\\..\\..\\releases"
     },
     {
-      "name": "DotNetNuGet",
-      "stageLabel": "release",
-      "enabled": true,
-      "nugetSecret": "NuGet",
-      "source": "https://api.nuget.org/v3/index.json"
-    },
-    {
       "name": "DotNetPack",
       "stageLabel": "build",
       "enabled": true,
@@ -62,13 +55,6 @@
         "..\\..\\..\\src\\MaksIT.Core.UI\\MaksIT.Core.UI.csproj"
       ],
       "artifactsDir": "..\\..\\..\\releases"
-    },
-    {
-      "name": "DotNetNuGet",
-      "stageLabel": "release",
-      "enabled": true,
-      "nugetSecret": "NuGet",
-      "source": "https://api.nuget.org/v3/index.json"
     },
     {
       "name": "AttachNuGetPackages",

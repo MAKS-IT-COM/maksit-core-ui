@@ -1,7 +1,7 @@
 # MaksIT.Core desktop UI
 
 ![Line Coverage](https://img.shields.io/badge/Line%20Coverage-36.7%25-yellow)
-![Branch Coverage](https://img.shields.io/badge/Branch%20Coverage-38.2%25-yellow)
+![Branch Coverage](https://img.shields.io/badge/Branch%20Coverage-38.1%25-yellow)
 ![Method Coverage](https://img.shields.io/badge/Method%20Coverage-52.3%25-yellowgreen)
 
 Shared .NET 10 libraries for MaksIT desktop apps. Install from NuGet. Do not reference this folder from another repository.
